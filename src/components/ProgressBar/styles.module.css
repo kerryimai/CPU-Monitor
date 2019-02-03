@@ -1,0 +1,55 @@
+/*Styling for progress circle start here:*/
+.progressbar {
+  background: #393738;
+}
+
+.completion {
+  transition: width 1s ease;
+  background: linear-gradient(to right, #3abbe7, #aa9daf);
+}
+
+.over {
+  transition: width 1s ease;
+  background: linear-gradient(to right, #ce4141, #aa9daf);
+}
+
+.progressbar,
+.completion,
+.over {
+  height: 6px;
+  border-radius: 3px;
+  z-index: 2;
+  width: 65%;
+}
+
+.progressbarWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 96%;
+  height: 10%;
+}
+
+.progressbarLabel {
+  text-align: left;
+  font-weight: 100;
+  color: #b7b7b7;
+  font-size: 14px;
+  width: 28%;
+}
+
+.progressNum {
+  color: #ce9797;
+  font-size: 18px;
+  padding-left: 12px;
+  width: 100px;
+  text-align: left;
+}
+
+@media (max-width: 770px) {
+  .progressbarWrapper {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}

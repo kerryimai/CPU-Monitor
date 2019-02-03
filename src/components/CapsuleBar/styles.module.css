@@ -1,0 +1,32 @@
+.capsule {
+  border-radius: 4px;
+  background: linear-gradient(to right, #f6939e, #d8a1b2);
+  width: 52px;
+  height: 12px;
+  margin-top: 10px;
+}
+
+.capsuleBar {
+  min-width: 54px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.capsuleBar > h3 {
+  background: linear-gradient(to right, #76a6fd, #b9d0ff);
+  margin: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chartLabel {
+  background: #424041;
+  min-height: 30px;
+  width: 100%;
+  text-align: center;
+  color: #b1b1b1;
+  padding-top: 20px;
+}

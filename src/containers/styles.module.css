@@ -1,0 +1,266 @@
+/* .dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+} */
+
+/*left nav bar styling starts here*/
+
+/* .leftNavWrapper {
+  min-height: 100%;
+  background: #4d4b4c;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .diamond:hover {
+  perspective: 800px;
+  transition: 1s ease-out;
+
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+} */
+
+.progressWrapper {
+  width: 93px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.progressDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 500px;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(to right, #4f494a 0%, #4f494a 100%);
+  -webkit-border-image: -webkit-linear-gradient(left, #565051, #a7a7a8);
+
+  border-image-slice: 1;
+
+  /*border-image: linear-gradient(to right, #f6939e, #d8a1b2);*/
+  padding-top: 20px;
+}
+
+/* .list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+/* .navListItem {
+  height: 80px;
+  width: 97%;
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.navListItem > img {
+  width: 50%;
+} */
+
+.selectedListItem {
+  background: #424041;
+  border-right: 3px solid #ce9797;
+}
+
+/*main board div starts here:*/
+.mainBoard {
+  background: #424041;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashUpper {
+  height: 38vh;
+  padding-left: 40px;
+  display: flex;
+  min-height: 380px;
+  flex-direction: row;
+  background: linear-gradient(#3f3d3e, #524c4d);
+}
+
+.dashUpLeft > h1 {
+  color: #b1b1b1;
+  font-weight: 400;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  font-size: 24px;
+  text-align: left;
+}
+
+.dashUpLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 440px;
+  width: 40%;
+}
+
+.progressbarContainer {
+  height: 36%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.chartTitle {
+  color: #b1b1b1;
+  font-size: 20px;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  letter-spacing: 4px;
+  align-items: flex-start;
+}
+
+.chartTitle:after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background: #3abbe7;
+  margin-top: 20px;
+}
+
+.dashUpRight {
+  padding-right: 60px;
+  padding-left: 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.mainNum {
+  text-align: right;
+  font-size: 4em;
+  color: #ce9797;
+}
+
+.mainNum > h3 {
+  font-size: 14px;
+  color: #b1b1b1;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+/* 
+.upRightBtnDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 30%;
+  align-items: center;
+} */
+
+/* .btn {
+  width: 140px;
+  height: 36px;
+  border-radius: 18px;
+  border: 1px solid #b1b1b1;
+  background: none;
+  font-size: 20px;
+  color: #b1b1b1;
+  margin-left: 30px;
+} */
+
+/* .btn:hover {
+  cursor: pointer;
+} */
+
+/*style for bottom part of dashboard start here:*/
+.dashBottom {
+  display: flex;
+  height: 50vh;
+  min-height: 400px;
+  background-color: #434343;
+  background-image: linear-gradient(#3f3d3e, #524c4d);
+}
+
+.dashBottomLeft {
+  background: white;
+  min-width: 300px;
+  width: 36vw;
+  max-width: 400px;
+
+  background: transparent;
+}
+/* 
+.unsplashWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #424041;
+  flex-direction: column;
+} */
+
+/* .unsplashCube {
+  width: 100%;
+  box-shadow: -14px 17px 43px 3px rgba(0, 0, 0, 0.75);
+} */
+
+/* .flower {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 140%;
+  height: auto;
+  z-index: 1;
+} */
+
+/* 
+@media (max-width: 930px) {
+  .leftNavWrapper {
+    display: none;
+  }
+} */
+
+@media (max-width: 770px) {
+  .dashUpper {
+    flex-direction: column;
+    min-height: 400px;
+    padding: 16px;
+  }
+
+  .dashUpRight {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .mainNum > h3 {
+    text-align: center;
+  }
+
+  /* .btn {
+    margin: 0;
+  } */
+
+  .dashUpLeft {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .chartTitle,
+  .dashBottomLeft {
+    display: none;
+  }
+
+  .dashUpLeft > h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+}
