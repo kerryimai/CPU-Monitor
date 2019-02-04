@@ -7,8 +7,10 @@ const cors = require("cors");
 app.use(cors());
 
 app.get("/load-average", function(req, res) {
+  const cpus = os.cpus().length;
   const loadAverage = os.loadavg();
-  return res.send(JSON.stringify({ loadAverage }));
+  const averages = loadAverage.map(avg => avg / cpus);
+  return res.send(JSON.stringify({ loadAverage: averages }));
 });
 
 app.get("/cpus", function(req, res) {

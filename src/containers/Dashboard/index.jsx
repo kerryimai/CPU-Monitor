@@ -8,13 +8,11 @@ import moment from "moment";
 class Dashboard extends Component {
   state = {
     loadAveRecords: [],
-    CPUUsage: { 1: 0, 5: 0, 10: 0 },
-    CPUCounts: null
+    CPUUsage: { 1: 0, 5: 0, 10: 0 }
   };
 
   componentDidMount() {
     this.initInterval();
-    fetchCPUs().then(res => this.setState({ CPUCounts: res.cpus }));
   }
 
   initInterval = () => {
@@ -34,8 +32,9 @@ class Dashboard extends Component {
     }, 5000);
   };
 
+  isOverLimit = lists => {};
+
   setCPUUsage = usage => {
-    console.log("ASFD", usage);
     this.setState({
       CPUUsage: {
         1: parseFloat(usage[0].toFixed(2)),
@@ -49,10 +48,10 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { loadAveRecords, CPUUsage, CPUCounts } = this.state;
+    const { loadAveRecords, CPUUsage } = this.state;
     return (
       <div className={styles.mainBoard}>
-        <UpperDashboard CPUCounts={CPUCounts} CPUUsage={CPUUsage} />
+        <UpperDashboard CPUUsage={CPUUsage} />
         <div className={styles.dashBottom}>
           <AreaChart loadAveRecords={loadAveRecords} CPUUsage={CPUUsage} />
         </div>

@@ -10,13 +10,13 @@ class ProgressBar extends Component {
   };
 
   getPercentage = () => {
-    const val = (this.props.completion / this.props.CPUCounts) * 100;
+    const val = this.props.completion * 100;
     return parseFloat(val.toFixed(2));
   };
+
   render() {
     const percent = this.getPercentage();
     const style = { width: `${percent <= 100 ? percent : 100}%` };
-
     return (
       <div className={styles.progressbarWrapper}>
         <div className={styles.progressbarLabel}>{this.props.label} min</div>
