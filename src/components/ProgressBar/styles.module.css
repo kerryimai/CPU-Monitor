@@ -51,4 +51,8 @@
     align-items: center;
     width: 100%;
   }
+
+  .progressNum {
+    text-align: right;
+  }
 }

@@ -134,25 +134,39 @@
   background: transparent;
 }
 
+.emptyAlert {
+  color: #e29595;
+  margin-top: 50px;
+}
+
 @media (max-width: 770px) {
   .dashUpper {
     flex-direction: column;
     min-height: 400px;
     padding: 16px;
+    align-items: center;
   }
 
   .dashUpRight {
     justify-content: center;
     align-items: center;
-    padding: 0;
+    margin: 0;
+    width: 95%;
+    height: 200px;
   }
+
+  .innerContainer {
+    height: 200px;
+  }
+
   .mainNum > h3 {
     text-align: center;
   }
 
   .dashUpLeft {
-    width: 100%;
+    width: 95%;
     justify-content: center;
+    align-items: center;
   }
 
   .chartTitle,
@@ -163,5 +177,9 @@
   .dashUpLeft > h1 {
     font-size: 18px;
     text-align: center;
+  }
+
+  .progressbarContainer {
+    width: 95%;
   }
 }

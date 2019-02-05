@@ -4,6 +4,11 @@ import UpperDashboard from "../UpperDashboard";
 import AreaChart from "../../components/AreaChart";
 import fetchCPU from "../../fetchCPU";
 import moment from "moment";
+import calculateTwoMinAverage from "./calculateTwoMinAverage";
+
+const THRESHOLD = 1;
+const INTERVAL = 10000;
+const MAX_LENGTH = 60;
 
 class Dashboard extends Component {
   state = {
@@ -14,7 +19,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.initInterval(5000);
+    this.initInterval(INTERVAL);
   }
 
   initInterval = interval => {
@@ -23,59 +28,42 @@ class Dashboard extends Component {
         .then(res => {
           this.setCPUUsage(res.loadAverage);
           const time = moment().format("LTS");
+          const prevRecords =
+            this.state.loadAveRecords.length > MAX_LENGTH
+              ? this.state.loadAveRecords.slice(
+                  this.state.loadAveRecords.length - MAX_LENGTH
+                )
+              : this.state.loadAveRecords;
           this.setState(
             {
               loadAveRecords: [
-                ...this.state.loadAveRecords,
+                ...prevRecords,
                 { [time]: parseFloat(res.loadAverage[0].toFixed(2)) }
               ]
             },
-            () => this.checkIfOverLimit(this.state.loadAveRecords)
+            this.checkIfOverLimit
           );
         })
         .catch(err => console.log("ERR", err));
     }, interval);
   };
 
-  checkIfOverLimit = list => {
-    const twoMinsAverage = this.lastTwoMinAverage(list);
-    if (!this.state.isOverLimit && twoMinsAverage > 1) {
-      // should I create new time?
+  checkIfOverLimit = () => {
+    const twoMinAverage = calculateTwoMinAverage(this.state.loadAveRecords);
+    const isOverLimit = twoMinAverage > THRESHOLD;
+    if (isOverLimit !== this.state.isOverLimit) {
+      // we've changed state!
       this.setState({
-        isOverLimit: true,
+        isOverLimit,
         alertRecord: [
           {
-            isAlert: true,
+            isAlert: isOverLimit,
             time: moment().format("LTS"),
-            value: twoMinsAverage
+            value: twoMinAverage
           },
           ...this.state.alertRecord
         ]
       });
-    } else if (this.state.isOverLimit && twoMinsAverage <= 1) {
-      this.setState({
-        isOverLimit: false,
-        alertRecord: [
-          {
-            isAlert: false,
-            time: moment().format("LTS"),
-            value: twoMinsAverage
-          },
-          ...this.state.alertRecord
-        ]
-      });
-    }
-  };
-
-  lastTwoMinAverage = lists => {
-    if (lists.length < 7) {
-      return -1;
-    } else {
-      const firstMinute = lists[lists.length - 1];
-      const secondMinute = lists[lists.length - 7];
-      return (
-        (Object.values(firstMinute)[0] + Object.values(secondMinute)[0]) / 2
-      );
     }
   };
 

@@ -23,7 +23,11 @@ class UpperDashboard extends Component {
 
         <div className={styles.dashUpRight}>
           <div className={styles.innerContainer}>
-            {this.buildAlertRecords(alertRecord)}
+            {alertRecord.length ? (
+              this.buildAlertRecords(alertRecord)
+            ) : (
+              <h1 className={styles.emptyAlert}> Your Alerts</h1>
+            )}
           </div>
         </div>
       </div>

@@ -57,15 +57,30 @@ class AreaChart extends Component {
     this.chart.update();
   };
 
+  setData = loadAverages => {
+    this.chart.data.datasets.forEach(dataset => {
+      dataset.data = loadAverages.map(
+        loadAverage => Object.values(loadAverage)[0]
+      );
+    });
+    this.chart.data.labels = loadAverages.map(
+      loadAve => Object.keys(loadAve)[0]
+    );
+    this.chart.update();
+  };
+
   componentDidUpdate(prev) {
-    if (
-      this.props.loadAveRecords.length &&
-      this.props.loadAveRecords.length !== prev.loadAveRecords.length
-    ) {
+    if (!this.props.loadAveRecords.length) return;
+
+    if (this.props.loadAveRecords.length !== prev.loadAveRecords.length) {
       const newLoadAve = this.props.loadAveRecords[
         this.props.loadAveRecords.length - 1
       ];
       this.addData(newLoadAve);
+    } else if (this.props.loadAveRecords[0] !== prev.loadAveRecords[0]) {
+      // if the first one has changed (we are cycling through), we need to fully
+      // update the chart
+      this.setData(this.props.loadAveRecords);
     }
   }
 
