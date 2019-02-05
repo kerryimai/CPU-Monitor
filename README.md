@@ -12,14 +12,13 @@
 
 
 
-To install and start the app:
+### To install and start the app:
 
 Use node version - 8.10.0
 ### `yarn`
+   Install dependecies.
 
-Install dependecies.
-
-Start express server:
+- Start express server:
 ### `yarn server`
 
 
