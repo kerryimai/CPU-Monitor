@@ -14,6 +14,7 @@
 
 To install and start the app:
 
+Use node version - 8.10.0
 ### `yarn`
 
 Install dependecies.
