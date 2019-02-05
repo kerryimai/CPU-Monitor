@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Chart from "chart.js/dist/Chart.min.js";
 import styles from "./styles.module.css";
 
-const data = {
+const getData = () => ({
   labels: [],
   datasets: [
     {
@@ -14,9 +14,9 @@ const data = {
       data: []
     }
   ]
-};
+});
 
-const options = {
+const getOptions = () => ({
   maintainAspectRatio: false,
   scales: {
     xAxes: [
@@ -37,15 +37,15 @@ const options = {
   legend: {
     display: false
   }
-};
+});
 
 class AreaChart extends Component {
   componentDidMount() {
     const ctx = this.canvas.getContext("2d");
     this.chart = new Chart(ctx, {
       type: "line",
-      data: data,
-      options: options
+      data: getData(),
+      options: getOptions()
     });
   }
 
@@ -58,7 +58,10 @@ class AreaChart extends Component {
   };
 
   componentDidUpdate(prev) {
-    if (this.props.loadAveRecords.length) {
+    if (
+      this.props.loadAveRecords.length &&
+      this.props.loadAveRecords.length !== prev.loadAveRecords.length
+    ) {
       const newLoadAve = this.props.loadAveRecords[
         this.props.loadAveRecords.length - 1
       ];

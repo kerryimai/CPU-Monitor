@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import ProgressBar from "../../components/ProgressBar";
 import styles from "../styles.module.css";
+import Capsule from "../../components/Capsule";
 
 class UpperDashboard extends Component {
+  buildAlertRecords = records =>
+    records.map(record => <Capsule record={record} key={record.time} />);
+
   render() {
-    const { CPUUsage } = this.props;
+    const { CPUUsage, alertRecord } = this.props;
     return (
       <div className={styles.dashUpper}>
         <div className={styles.dashUpLeft}>
@@ -17,7 +21,11 @@ class UpperDashboard extends Component {
           <div className={styles.chartTitle}>Load Average Monitor</div>
         </div>
 
-        <div className={styles.dashUpRight} />
+        <div className={styles.dashUpRight}>
+          <div className={styles.innerContainer}>
+            {this.buildAlertRecords(alertRecord)}
+          </div>
+        </div>
       </div>
     );
   }
