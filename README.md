@@ -11,8 +11,8 @@
 - Enzyme
 
 
-
 ### To install and start the app:
+
 
 Use node version - 8.10.0
 ### `yarn`
@@ -31,7 +31,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 For testing, run:
 ### `npm test`
 
-### Explain how you’d improve on this application design:
+
+### How I’d improve on this application design:
 - use websocket for data pulling
 - extracting logic to helper files
 - locales for translation
