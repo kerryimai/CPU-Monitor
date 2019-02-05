@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 For testing, run:
 ### `npm test`
 
-###Explain how you’d improve on this application design:
+### Explain how you’d improve on this application design:
 - use websocket for data pulling
 - extracting logic to helper files
 - locales for translation
