@@ -78,7 +78,7 @@ class AreaChart extends Component {
       ];
       this.addData(newLoadAve);
     } else if (this.props.loadAveRecords[0] !== prev.loadAveRecords[0]) {
-      // if the first one has changed (we are cycling through), we need to fully
+      // if the first onesadf has changed (we are cycling through), we need to fully
       // update the chart
       this.setData(this.props.loadAveRecords);
     }
